@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        0.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -51,15 +51,18 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %files
 %doc COPYING README
-%{_bindir}/hb-view
 %{_libdir}/*.so.*
 
 %files devel
+%{_bindir}/hb-view
 %{_includedir}/harfbuzz/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/harfbuzz.pc
 
 
 %changelog
+* Thu Jun 16 2011 Kalev Lember <kalev@smartlink.ee> - 0.6.0-2
+- Moved hb-view to -devel subpackage (#713126)
+
 * Tue Jun 14 2011 Kalev Lember <kalev@smartlink.ee> - 0.6.0-1
 - Initial RPM release
