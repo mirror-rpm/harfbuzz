@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        0.6.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -61,6 +61,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %changelog
+* Sat Sep 10 2011 Kalev Lember <kalevlember@gmail.com> - 0.6.0-3
+- Rebuilt for libicu 4.8
+
 * Thu Jun 16 2011 Kalev Lember <kalev@smartlink.ee> - 0.6.0-2
 - Moved hb-view to -devel subpackage (#713126)
 
