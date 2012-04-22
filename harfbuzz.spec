@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        0.6.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -61,6 +61,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %changelog
+* Mon Apr 23 2012 Kalev Lember <kalevlember@gmail.com> - 0.6.0-6
+- Rebuilt for libicu 49
+
 * Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.0-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
