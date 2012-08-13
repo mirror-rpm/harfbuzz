@@ -1,6 +1,6 @@
 Name:           harfbuzz
-Version:        0.6.0
-Release:        7%{?dist}
+Version:        0.9.2
+Release:        1%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -40,7 +40,7 @@ make %{?_smp_mflags} V=1
 
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
@@ -50,17 +50,22 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %files
-%doc COPYING README
+%doc NEWS ChangeLog AUTHORS COPYING README
 %{_libdir}/*.so.*
 
 %files devel
 %{_bindir}/hb-view
+%{_bindir}/hb-ot-shape-closure
+%{_bindir}/hb-shape
 %{_includedir}/harfbuzz/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/harfbuzz.pc
 
 
 %changelog
+* Mon Aug 13 2012 Parag Nemade <paragn AT fedoraproject DOT org> - 0.9.2-1
+- Update to 0.9.2 upstream release
+
 * Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.0-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
