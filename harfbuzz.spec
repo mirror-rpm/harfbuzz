@@ -1,5 +1,5 @@
 Name:           harfbuzz
-Version:        0.9.4
+Version:        0.9.5
 Release:        1%{?dist}
 Summary:        Text shaping library
 
@@ -63,6 +63,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %changelog
+* Mon Oct 15 2012 Parag Nemade <paragn AT fedoraproject DOT org> - 0.9.5-1
+- Update to 0.9.5 upstream release
+
 * Mon Sep 10 2012 Parag Nemade <paragn AT fedoraproject DOT org> - 0.9.4-1
 - Update to 0.9.4 upstream release
 
