@@ -63,6 +63,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %changelog
+* Fri Jan 25 2013 Orion Poplawski <orion@cora.nwra.com> - 0.9.12-1
+- Rebuild for libicu 50
+
 * Sun Jan 20 2013 Parag Nemade <pnemade AT pnemade DOT com> - 0.9.12-1
 - Update to 0.9.12 upstream release
 
