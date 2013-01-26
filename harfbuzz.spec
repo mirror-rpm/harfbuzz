@@ -66,7 +66,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %changelog
-* Sat Jan 25 2013 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.9.12-3
+* Sat Jan 26 2013 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.9.12-3
 - Add "icu-config --cppflags" to compiler flags to fix build
 
 * Fri Jan 25 2013 Orion Poplawski <orion@cora.nwra.com> - 0.9.12-2
