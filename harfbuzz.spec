@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        0.9.12
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -30,6 +30,9 @@ developing applications that use %{name}.
 
 
 %build
+# Add -DU_DISABLE_RENAMING=1 to compiler flags
+# (ref: bug 856594)
+export CXXFLAGS="%{optflags} $(icu-config --cppflags)"
 %configure --disable-static
 
 # Remove lib64 rpath
@@ -63,6 +66,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %changelog
+* Sat Jan 25 2013 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.9.12-3
+- Add "icu-config --cppflags" to compiler flags to fix build
+
 * Fri Jan 25 2013 Orion Poplawski <orion@cora.nwra.com> - 0.9.12-2
 - Rebuild for libicu 50
 
