@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        0.9.12
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -11,6 +11,7 @@ BuildRequires:  cairo-devel
 BuildRequires:  freetype-devel
 BuildRequires:  glib2-devel
 BuildRequires:  libicu-devel
+BuildRequires:  graphite2-devel
 
 %description
 HarfBuzz is an implementation of the OpenType Layout engine.
@@ -66,6 +67,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %changelog
+* Sun Jan 27 2013 Parag Nemade <pnemade AT pnemade DOT com> - 0.9.12-4
+- Resolves:rh#904700-Enable additional shaper graphite2
+
 * Sat Jan 26 2013 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.9.12-3
 - Add "icu-config --cppflags" to compiler flags to fix build
 
