@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        0.9.12
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -11,6 +11,7 @@ BuildRequires:  cairo-devel
 BuildRequires:  freetype-devel
 BuildRequires:  glib2-devel
 BuildRequires:  libicu-devel
+#built against graphite-1.2.0 in f19
 BuildRequires:  graphite2-devel
 
 %description
@@ -67,6 +68,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %changelog
+* Tue Jan 29 2013 Parag Nemade <pnemade AT pnemade DOT com> - 0.9.12-5
+- Resolves:rh#905334 - Please rebuild harfbuzz for new graphite-1.2.0	
+
 * Sun Jan 27 2013 Parag Nemade <pnemade AT pnemade DOT com> - 0.9.12-4
 - Resolves:rh#904700-Enable additional shaper graphite2
 
