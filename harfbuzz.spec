@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        0.9.12
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -32,9 +32,6 @@ developing applications that use %{name}.
 
 
 %build
-# Add -DU_DISABLE_RENAMING=1 to compiler flags
-# (ref: bug 856594)
-export CXXFLAGS="%{optflags} $(icu-config --cppflags)"
 %configure --disable-static
 
 # Remove lib64 rpath
@@ -68,6 +65,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %changelog
+* Wed Jan 30 2013 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.9.12-6
+- Kill icu-config hack and rebuild against new icu again
+
 * Tue Jan 29 2013 Parag Nemade <pnemade AT pnemade DOT com> - 0.9.12-5
 - Resolves:rh#905334 - Please rebuild harfbuzz for new graphite-1.2.0	
 
