@@ -1,6 +1,6 @@
 Name:           harfbuzz
-Version:        0.9.12
-Release:        6%{?dist}
+Version:        0.9.13
+Release:        1%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -65,6 +65,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %changelog
+* Tue Feb 26 2013 Parag Nemade <pnemade AT redhat DOT com> - 0.9.13-1
+- Update to 0.9.13 upstream release
+
 * Wed Jan 30 2013 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.9.12-6
 - Kill icu-config hack and rebuild against new icu again
 
