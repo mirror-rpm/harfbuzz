@@ -1,5 +1,5 @@
 Name:           harfbuzz
-Version:        0.9.17
+Version:        0.9.18
 Release:        1%{?dist}
 Summary:        Text shaping library
 
@@ -11,7 +11,6 @@ BuildRequires:  cairo-devel
 BuildRequires:  freetype-devel
 BuildRequires:  glib2-devel
 BuildRequires:  libicu-devel
-#built against graphite-1.2.0 in f19
 BuildRequires:  graphite2-devel
 
 %description
@@ -20,19 +19,34 @@ HarfBuzz is an implementation of the OpenType Layout engine.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+%package        icu
+Summary:        Harfbuzz ICU support library
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+
+%description    icu
+This package contains Harfbuzz ICU support library.
+
+%package        icu-devel
+Summary:        Development files for %{name}-icu
+Requires:       %{name}-icu%{?_isa} = %{version}-%{release}
+Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
+
+%description    icu-devel
+The %{name}-icu-devel package contains libraries and header files for
+developing applications that use %{name}-icu.
 
 %prep
 %setup -q
 
 
 %build
-%configure --disable-static
+%configure --disable-static --with-graphite2
 
 # Remove lib64 rpath
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
@@ -50,21 +64,36 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %postun -p /sbin/ldconfig
 
+%post icu -p /sbin/ldconfig
+
+%postun icu -p /sbin/ldconfig
 
 %files
 %doc NEWS ChangeLog AUTHORS COPYING README
-%{_libdir}/*.so.*
+%{_libdir}/libharfbuzz.so.*
 
 %files devel
 %{_bindir}/hb-view
 %{_bindir}/hb-ot-shape-closure
 %{_bindir}/hb-shape
 %{_includedir}/harfbuzz/
-%{_libdir}/*.so
+%exclude %{_includedir}/harfbuzz/hb-icu.h
+%{_libdir}/libharfbuzz.so
 %{_libdir}/pkgconfig/harfbuzz.pc
+
+%files icu
+%{_libdir}/libharfbuzz-icu.so.*
+
+%files icu-devel
+%{_includedir}/harfbuzz/hb-icu.h
+%{_libdir}/libharfbuzz-icu.so
+%{_libdir}/pkgconfig/harfbuzz-icu.pc
 
 
 %changelog
+* Wed Jun 05 2013 Parag Nemade <pnemade AT redhat DOT com> - 0.9.18-1
+- Update to 0.9.18 upstream release
+
 * Tue May 21 2013 Parag Nemade <pnemade AT redhat DOT com> - 0.9.17-1
 - Update to 0.9.17 upstream release
 
@@ -81,7 +110,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 - Kill icu-config hack and rebuild against new icu again
 
 * Tue Jan 29 2013 Parag Nemade <pnemade AT pnemade DOT com> - 0.9.12-5
-- Resolves:rh#905334 - Please rebuild harfbuzz for new graphite-1.2.0	
+- Resolves:rh#905334 - Please rebuild harfbuzz for new graphite-1.2.0
 
 * Sun Jan 27 2013 Parag Nemade <pnemade AT pnemade DOT com> - 0.9.12-4
 - Resolves:rh#904700-Enable additional shaper graphite2
