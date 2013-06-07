@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        0.9.18
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -20,6 +20,7 @@ HarfBuzz is an implementation of the OpenType Layout engine.
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       %{name}-icu%{?_isa} = %{version}-%{release}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
@@ -31,15 +32,6 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    icu
 This package contains Harfbuzz ICU support library.
-
-%package        icu-devel
-Summary:        Development files for %{name}-icu
-Requires:       %{name}-icu%{?_isa} = %{version}-%{release}
-Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
-
-%description    icu-devel
-The %{name}-icu-devel package contains libraries and header files for
-developing applications that use %{name}-icu.
 
 %prep
 %setup -q
@@ -61,12 +53,11 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %post icu -p /sbin/ldconfig
-
 %postun icu -p /sbin/ldconfig
+
 
 %files
 %doc NEWS ChangeLog AUTHORS COPYING README
@@ -77,20 +68,18 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_bindir}/hb-ot-shape-closure
 %{_bindir}/hb-shape
 %{_includedir}/harfbuzz/
-%exclude %{_includedir}/harfbuzz/hb-icu.h
 %{_libdir}/libharfbuzz.so
 %{_libdir}/pkgconfig/harfbuzz.pc
+%{_libdir}/libharfbuzz-icu.so
+%{_libdir}/pkgconfig/harfbuzz-icu.pc
 
 %files icu
 %{_libdir}/libharfbuzz-icu.so.*
 
-%files icu-devel
-%{_includedir}/harfbuzz/hb-icu.h
-%{_libdir}/libharfbuzz-icu.so
-%{_libdir}/pkgconfig/harfbuzz-icu.pc
-
-
 %changelog
+* Fri Jun 07 2013 Parag Nemade <pnemade AT redhat DOT com> - 0.9.18-2
+- Resolves:rh#971795:Merge -icu-devel subpackage into -devel subpackage
+
 * Wed Jun 05 2013 Parag Nemade <pnemade AT redhat DOT com> - 0.9.18-1
 - Update to 0.9.18 upstream release
 
