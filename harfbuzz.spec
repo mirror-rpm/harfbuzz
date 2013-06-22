@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        0.9.18
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -60,7 +60,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %files
-%doc NEWS ChangeLog AUTHORS COPYING README
+%doc NEWS AUTHORS COPYING README
 %{_libdir}/libharfbuzz.so.*
 
 %files devel
@@ -77,6 +77,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Fri Jun 21 2013 Matthias Clasen <mclasen@redhat.com> - 0.9.18-3
+- Don't ship a (humongous) ChangeLog
+
 * Fri Jun 07 2013 Parag Nemade <pnemade AT redhat DOT com> - 0.9.18-2
 - Resolves:rh#971795:Merge -icu-devel subpackage into -devel subpackage
 
