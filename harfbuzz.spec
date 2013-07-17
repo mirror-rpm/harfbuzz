@@ -1,6 +1,6 @@
 Name:           harfbuzz
-Version:        0.9.18
-Release:        3%{?dist}
+Version:        0.9.19
+Release:        1%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -77,6 +77,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Wed Jul 17 2013 Parag Nemade <pnemade AT redhat DOT com> - 0.9.19-1
+- Update to 0.9.19 upstream release
+
 * Fri Jun 21 2013 Matthias Clasen <mclasen@redhat.com> - 0.9.18-3
 - Don't ship a (humongous) ChangeLog
 
