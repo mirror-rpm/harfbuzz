@@ -1,6 +1,6 @@
 Name:           harfbuzz
-Version:        0.9.19
-Release:        2%{?dist}
+Version:        0.9.20
+Release:        1%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -12,6 +12,7 @@ BuildRequires:  freetype-devel
 BuildRequires:  glib2-devel
 BuildRequires:  libicu-devel
 BuildRequires:  graphite2-devel
+BuildRequires:  gtk-doc
 
 %description
 HarfBuzz is an implementation of the OpenType Layout engine.
@@ -64,6 +65,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz.so.*
 
 %files devel
+%doc %{_datadir}/gtk-doc
 %{_bindir}/hb-view
 %{_bindir}/hb-ot-shape-closure
 %{_bindir}/hb-shape
@@ -77,6 +79,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Fri Aug 30 2013 Parag Nemade <pnemade AT redhat DOT com> - 0.9.20-1
+- Update to 0.9.20 upstream release
+
 * Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.19-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
