@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        0.9.34
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -79,6 +79,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Sat Aug 16 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.34-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
 * Wed Aug 06 2014 Parag Nemade <pnemade AT redhat DOT com> - 0.9.34-1
 - Update to 0.9.34 upstream release
 
