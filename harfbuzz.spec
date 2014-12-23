@@ -1,5 +1,5 @@
 Name:           harfbuzz
-Version:        0.9.36
+Version:        0.9.37
 Release:        1%{?dist}
 Summary:        Text shaping library
 
@@ -79,6 +79,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Tue Dec 23 2014 Parag Nemade <pnemade AT redhat DOT com> - 0.9.37-1
+- Update to 0.9.37 upstream release
+
 * Tue Nov 25 2014 Parag Nemade <pnemade AT redhat DOT com> - 0.9.36-1
 - Update to 0.9.36 upstream release
 
