@@ -61,7 +61,8 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %files
-%doc NEWS AUTHORS COPYING README
+%license COPYING
+%doc NEWS AUTHORS README
 %{_libdir}/libharfbuzz.so.*
 
 %files devel
@@ -81,6 +82,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %changelog
 * Tue Sep 01 2015 Kalev Lember <klember@redhat.com> - 1.0.3-1
 - Update to 1.0.3
+- Use license macro for COPYING
 
 * Mon Aug 24 2015 Parag Nemade <pnemade AT redhat DOT com> - 1.0.2-1
 - Update to 1.0.2
