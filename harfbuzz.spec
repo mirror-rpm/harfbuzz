@@ -80,7 +80,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
-* Tue Jan 12 2015 Parag Nemade <pnemade AT redhat DOT com> - 1.1.3-1
+* Tue Jan 12 2016 Parag Nemade <pnemade AT redhat DOT com> - 1.1.3-1
 - Update to 1.1.3
 
 * Mon Dec 21 2015 Parag Nemade <pnemade AT redhat DOT com> - 1.1.2-1
