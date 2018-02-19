@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        1.7.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -13,6 +13,7 @@ BuildRequires:  glib2-devel
 BuildRequires:  libicu-devel
 BuildRequires:  graphite2-devel
 BuildRequires:  gtk-doc
+BuildRequires:  gcc-c++
 
 %description
 HarfBuzz is an implementation of the OpenType Layout engine.
@@ -35,7 +36,7 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 This package contains Harfbuzz ICU support library.
 
 %prep
-%setup -q
+%autosetup
 
 
 %build
@@ -80,6 +81,10 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Mon Feb 19 2018 Parag Nemade <pnemade AT redhat DOT com> - 1.7.5-3
+- Add BuildRequires: gcc-c++ as per packaging guidelines
+- Used %%autosetup
+
 * Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.7.5-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
