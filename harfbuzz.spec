@@ -1,6 +1,6 @@
 Name:           harfbuzz
-Version:        1.7.5
-Release:        3%{?dist}
+Version:        1.7.6
+Release:        1%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -81,6 +81,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Thu Mar 08 2018 Parag Nemade <pnemade AT redhat DOT com> - 1.7.6-1
+- Update to 1.7.6 version (#1552962)
+
 * Mon Feb 19 2018 Parag Nemade <pnemade AT redhat DOT com> - 1.7.5-3
 - Add BuildRequires: gcc-c++ as per packaging guidelines
 - Used %%autosetup
