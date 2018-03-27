@@ -65,17 +65,22 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %license COPYING
 %doc NEWS AUTHORS README
 %{_libdir}/libharfbuzz.so.*
+%{_libdir}/libharfbuzz-subset.so.*
 
 %files devel
 %doc %{_datadir}/gtk-doc
 %{_bindir}/hb-view
 %{_bindir}/hb-ot-shape-closure
 %{_bindir}/hb-shape
+%{_bindir}/hb-subset
 %{_includedir}/harfbuzz/
 %{_libdir}/libharfbuzz.so
 %{_libdir}/pkgconfig/harfbuzz.pc
 %{_libdir}/libharfbuzz-icu.so
 %{_libdir}/pkgconfig/harfbuzz-icu.pc
+%{_libdir}/libharfbuzz-subset.so
+%{_libdir}/pkgconfig/harfbuzz-subset.pc
+%{_libdir}/cmake/harfbuzz/
 
 %files icu
 %{_libdir}/libharfbuzz-icu.so.*
@@ -83,6 +88,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %changelog
 * Thu Mar 08 2018 Parag Nemade <pnemade AT redhat DOT com> - 1.7.6-1
 - Update to 1.7.6 version (#1552962)
+- Added new lib libharfbuzz-subset by upstream
+- Added harfbuzz cmake file
+- Added hb-subset binary file
 
 * Mon Feb 19 2018 Parag Nemade <pnemade AT redhat DOT com> - 1.7.5-3
 - Add BuildRequires: gcc-c++ as per packaging guidelines
