@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        1.7.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -86,6 +86,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Mon Apr 30 2018 Pete Walter <pwalter@fedoraproject.org> - 1.7.6-2
+- Rebuild for ICU 61.1
+
 * Thu Mar 08 2018 Parag Nemade <pnemade AT redhat DOT com> - 1.7.6-1
 - Update to 1.7.6 version (#1552962)
 - Added new lib libharfbuzz-subset by upstream
