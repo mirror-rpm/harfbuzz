@@ -54,11 +54,9 @@ make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
-%post icu -p /sbin/ldconfig
-%postun icu -p /sbin/ldconfig
+%ldconfig_scriptlets icu
 
 
 %files
