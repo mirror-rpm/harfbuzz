@@ -1,11 +1,11 @@
 Name:           harfbuzz
-Version:        2.4.0
+Version:        2.5.0
 Release:        1%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
 URL:            http://freedesktop.org/wiki/Software/HarfBuzz
-Source0:        http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-%{version}.tar.bz2
+Source0:        http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-%{version}.tar.xz
 
 BuildRequires:  cairo-devel
 BuildRequires:  freetype-devel
@@ -84,6 +84,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Sun May 26 2019 Parag Nemade <pnemade AT redhat DOT com> - 2.5.0-1
+- Update to 2.5.0 version (#1713797)
+
 * Fri Apr 12 2019 Parag Nemade <pnemade AT redhat DOT com> - 2.4.0-1
 - Update to 2.4.0 version (#1693940)
 
