@@ -1,11 +1,21 @@
 Name:           harfbuzz
 Version:        2.5.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
 URL:            http://freedesktop.org/wiki/Software/HarfBuzz
 Source0:        http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-%{version}.tar.xz
+# https://bugzilla.redhat.com/show_bug.cgi?id=1689037
+# https://github.com/harfbuzz/harfbuzz/issues/1829
+# Hand-revert the commit that causes the above bug. This means we're
+# using a deprecated graphite API, but it also means anaconda doesn't
+# just suddenly die right after startup occasionally. Drop this when
+# upstream has a proper fix. The function used here was marked
+# deprecated in 1.3.12; as of 2019-07 Rawhide is on 1.3.10, if it gets
+# to 1.3.12 while this patch is still in place, we may need to pass
+# -Wno-deprecated-declarations for build to work
+Patch0:         0001-Revert-e4e74c2751.patch
 
 BuildRequires:  cairo-devel
 BuildRequires:  freetype-devel
@@ -36,7 +46,7 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 This package contains Harfbuzz ICU support library.
 
 %prep
-%autosetup
+%autosetup -p1
 
 
 %build
@@ -84,6 +94,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Fri Jul 12 2019 Adam Williamson <awilliam@redhat.com> - 2.5.3-2
+- Revert the offending commit to avoid RHBZ #1689037
+
 * Thu Jun 27 2019 Parag Nemade <pnemade AT redhat DOT com> - 2.5.3-1
 - Update to 2.5.3 version (#1724317)
 
