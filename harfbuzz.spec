@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        2.5.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -94,6 +94,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.3-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
 * Fri Jul 12 2019 Adam Williamson <awilliam@redhat.com> - 2.5.3-2
 - Revert the offending commit to avoid RHBZ #1689037
 
