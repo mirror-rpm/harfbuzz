@@ -6,16 +6,6 @@ Summary:        Text shaping library
 License:        MIT
 URL:            http://freedesktop.org/wiki/Software/HarfBuzz
 Source0:        http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-%{version}.tar.xz
-# https://bugzilla.redhat.com/show_bug.cgi?id=1689037
-# https://github.com/harfbuzz/harfbuzz/issues/1829
-# Hand-revert the commit that causes the above bug. This means we're
-# using a deprecated graphite API, but it also means anaconda doesn't
-# just suddenly die right after startup occasionally. Drop this when
-# upstream has a proper fix. The function used here was marked
-# deprecated in 1.3.12; as of 2019-07 Rawhide is on 1.3.10, if it gets
-# to 1.3.12 while this patch is still in place, we may need to pass
-# -Wno-deprecated-declarations for build to work
-Patch0:         0001-Revert-e4e74c2751.patch
 
 BuildRequires:  cairo-devel
 BuildRequires:  freetype-devel
