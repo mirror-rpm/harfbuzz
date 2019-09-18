@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        2.6.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -10,6 +10,7 @@ Source0:        http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-%{
 BuildRequires:  cairo-devel
 BuildRequires:  freetype-devel
 BuildRequires:  glib2-devel
+BuildRequires:  gobject-introspection-devel
 BuildRequires:  libicu-devel
 BuildRequires:  graphite2-devel
 BuildRequires:  gtk-doc
@@ -40,11 +41,7 @@ This package contains Harfbuzz ICU support library.
 
 
 %build
-%configure --disable-static --with-graphite2
-
-# Remove lib64 rpath
-sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
-sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
+%configure --disable-static --with-graphite2 --with-gobject --enable-introspection
 
 make %{?_smp_mflags} V=1
 
@@ -62,8 +59,11 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %files
 %license COPYING
 %doc NEWS AUTHORS README
-%{_libdir}/libharfbuzz.so.*
-%{_libdir}/libharfbuzz-subset.so.*
+%{_libdir}/libharfbuzz.so.0*
+%{_libdir}/libharfbuzz-gobject.so.0*
+%{_libdir}/libharfbuzz-subset.so.0*
+%dir %{_libdir}/girepository-1.0
+%{_libdir}/girepository-1.0/HarfBuzz-0.0.typelib
 
 %files devel
 %doc %{_datadir}/gtk-doc
@@ -73,17 +73,25 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_bindir}/hb-subset
 %{_includedir}/harfbuzz/
 %{_libdir}/libharfbuzz.so
-%{_libdir}/pkgconfig/harfbuzz.pc
+%{_libdir}/libharfbuzz-gobject.so
 %{_libdir}/libharfbuzz-icu.so
-%{_libdir}/pkgconfig/harfbuzz-icu.pc
 %{_libdir}/libharfbuzz-subset.so
+%{_libdir}/pkgconfig/harfbuzz.pc
+%{_libdir}/pkgconfig/harfbuzz-gobject.pc
+%{_libdir}/pkgconfig/harfbuzz-icu.pc
 %{_libdir}/pkgconfig/harfbuzz-subset.pc
 %{_libdir}/cmake/harfbuzz/
+%dir %{_datadir}/gir-1.0
+%{_datadir}/gir-1.0/HarfBuzz-0.0.gir
 
 %files icu
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Wed Sep 18 2019 Kalev Lember <klember@redhat.com> - 2.6.1-2
+- Build with --with-gobject --enable-introspection (#1737186)
+- Tighten soname globs
+
 * Fri Aug 23 2019 Parag Nemade <pnemade AT redhat DOT com> - 2.6.1-1
 - Update to 2.6.1 version (#1744835)
 
