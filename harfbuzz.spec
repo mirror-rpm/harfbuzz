@@ -1,6 +1,6 @@
 Name:           harfbuzz
-Version:        2.6.1
-Release:        2%{?dist}
+Version:        2.6.2
+Release:        1%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -88,6 +88,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Tue Oct 01 2019 Parag Nemade <pnemade AT redhat DOT com> - 2.6.2-1
+- Update to 2.6.2 version (#1757207)
+
 * Wed Sep 18 2019 Kalev Lember <klember@redhat.com> - 2.6.1-2
 - Build with --with-gobject --enable-introspection (#1737186)
 - Tighten soname globs
