@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        2.6.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -42,12 +42,11 @@ This package contains Harfbuzz ICU support library.
 
 %build
 %configure --disable-static --with-graphite2 --with-gobject --enable-introspection
-
-make %{?_smp_mflags} V=1
+%{make_build}
 
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
+%{make_install}
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
@@ -88,6 +87,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Wed Mar 18 2020 Parag Nemade <pnemade AT redhat DOT com> - 2.6.4-4
+- Use make_build and make_install macros
+
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.6.4-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
