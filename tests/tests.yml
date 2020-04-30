@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  tags:
+  - classic
+  roles:
+  - role: standard-test-source
+ 
+- hosts: localhost
+  tags:
+  - classic
+  roles:
+  - role: standard-test-basic
+    tests:
+    - smoke
+    required_packages:
+    - autoconf
+    - automake
+    - m4
+    - gcc-c++
+    - make
+    - python3-devel
+    - ragel
+    - libtool
+    - gtk-doc
+    - cairo-devel
+    - fontconfig-devel
