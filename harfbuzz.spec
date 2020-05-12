@@ -4,8 +4,8 @@ Release:        4%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
-URL:            http://freedesktop.org/wiki/Software/HarfBuzz
-Source0:        http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-%{version}.tar.xz
+URL:            https://harfbuzz.github.io/
+Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/harfbuzz-%{version}.tar.xz
 
 BuildRequires:  cairo-devel
 BuildRequires:  freetype-devel
