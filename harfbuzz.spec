@@ -1,6 +1,6 @@
 Name:           harfbuzz
-Version:        2.6.4
-Release:        4%{?dist}
+Version:        2.6.6
+Release:        1%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -87,6 +87,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Tue May 12 2020 Parag Nemade <pnemade AT redhat DOT com> - 2.6.6-1
+- Update to 2.6.6 version (#1834887)
+
 * Wed Mar 18 2020 Parag Nemade <pnemade AT redhat DOT com> - 2.6.4-4
 - Use make_build and make_install macros
 
