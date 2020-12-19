@@ -15,6 +15,7 @@ BuildRequires:  libicu-devel
 BuildRequires:  graphite2-devel
 BuildRequires:  gtk-doc
 BuildRequires:  gcc-c++
+BuildRequires: make
 
 %description
 HarfBuzz is an implementation of the OpenType Layout engine.
