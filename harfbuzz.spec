@@ -1,6 +1,6 @@
 Name:           harfbuzz
 Version:        2.7.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -88,6 +88,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Fri Feb 5 2021 Marek Kasik <mkasik@redhat.com> - 2.7.4-3
+- Build HarfBuzz with bootstrapped freetype
+
 * Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.7.4-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
