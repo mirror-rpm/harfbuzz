@@ -1,11 +1,14 @@
 Name:           harfbuzz
 Version:        3.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
 URL:            https://harfbuzz.github.io/
 Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/harfbuzz-%{version}.tar.xz
+
+# Upstream patches
+Patch0:         0001-mutex-Try-work-around-GCC-cast-align-error-warning.patch
 
 BuildRequires:  cairo-devel
 BuildRequires:  freetype-devel
@@ -88,6 +91,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Sat Nov 06 2021 Parag Nemade <pnemade AT redhat DOT com> - 3.1.0-2
+- Fix build failure on armv7hl architecture 
+
 * Fri Nov 05 2021 Parag Nemade <pnemade AT redhat DOT com> - 3.1.0-1
 - Update to 3.1.0 version (#2020154)
 
