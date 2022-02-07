@@ -1,5 +1,5 @@
 Name:           harfbuzz
-Version:        3.3.1
+Version:        3.3.2
 Release:        1%{?dist}
 Summary:        Text shaping library
 
@@ -88,6 +88,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Sun Feb 06 2022 Fedora Release Monitoring <release-monitoring@fedoraproject.org> - 3.3.2-1
+- Update to 3.3.2 (#2051293)
+
 * Thu Feb 03 2022 Parag Nemade <pnemade AT redhat DOT com> - 3.3.1-1
 - Update to 3.3.1 version (#2048881)
 
